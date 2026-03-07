@@ -40,6 +40,10 @@ func (v Vec2) Scale(other Vec2) float64 {
 	return v.X*other.X + v.Y*other.Y
 }
 
+func (v Vec2) Dot(other Vec2) float64 {
+	return v.X*other.X + v.Y*other.Y
+}
+
 func (v Vec2) DivScale(scale float64) Vec2 {
 	return Vec2{X: v.X / scale, Y: v.Y / scale}
 }

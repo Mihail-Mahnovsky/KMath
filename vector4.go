@@ -50,6 +50,10 @@ func (v Vec4) DivScale(scale float64) Vec4 {
 	return Vec4{X: v.X / scale, Y: v.Y / scale, Z: v.Z / scale, W: v.W / scale}
 }
 
+func (v Vec4) Dot(other Vec4) float64 {
+	return v.X*other.X + v.Y*other.Y + v.Z*other.Z + v.W*other.W
+}
+
 func (v Vec4) Print() {
 	fmt.Printf("x : %v, y : %v z : %v, w : %v \n", v.X, v.Y, v.Z, v.W)
 }
