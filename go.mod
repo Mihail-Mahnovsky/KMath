@@ -1,3 +1,3 @@
-module github.com/Mihail-Mahnovsky/linalg-go
+module github.com/Mihail-Mahnovsky/KMath
 
 go 1.25.0
