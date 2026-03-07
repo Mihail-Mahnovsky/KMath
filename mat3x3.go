@@ -50,7 +50,7 @@ func (m3 *Mat3x3) Mul(other *Mat3x3) Mat3x3 {
 	return newM
 }
 
-func (m *Mat3x3) MulVec(v Vec3) Vec3 {
+func (m *Mat3x3) MulVec3(v Vec3) Vec3 {
 	return Vec3{
 		X: v.X*m.Buf[0][0] + v.Y*m.Buf[0][1] + v.Z*m.Buf[0][2],
 		Y: v.X*m.Buf[1][0] + v.Y*m.Buf[1][1] + v.Z*m.Buf[1][2],
