@@ -48,6 +48,10 @@ func (v Vec2) DivScale(scale float64) Vec2 {
 	return Vec2{X: v.X / scale, Y: v.Y / scale}
 }
 
+func (v Vec2) Mul(scale float64) Vec2 {
+	return Vec2{X: v.X * scale, Y: v.Y * scale}
+}
+
 func (v Vec2) Print() {
 	fmt.Printf("x : %v, y : %v \n", v.X, v.Y)
 }

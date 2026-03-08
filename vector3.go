@@ -51,6 +51,10 @@ func (v Vec3) Dot(other Vec3) float64 {
 	return v.X*other.X + v.Y*other.Y + v.Z*other.Z
 }
 
+func (v Vec3) Mul(scale float64) Vec3 {
+	return Vec3{X: v.X * scale, Y: v.Y * scale, Z: v.Z * scale}
+}
+
 func (v Vec3) Print() {
 	fmt.Printf("x : %v, y : %v z : %v \n", v.X, v.Y, v.Z)
 }
