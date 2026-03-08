@@ -21,7 +21,7 @@ func MakeVec4(x float64, y float64, z float64, w float64) Vec4 {
 	}
 }
 
-func (v *Vec4) GetLength() float64 {
+func (v Vec4) GetLength() float64 {
 	return math.Sqrt(math.Pow(v.X, 2) + math.Pow(v.Y, 2) + math.Pow(v.Z, 2) + math.Pow(v.W, 2))
 }
 
@@ -56,6 +56,36 @@ func (v Vec4) Dot(other Vec4) float64 {
 
 func (v Vec4) Mul(scale float64) Vec4 {
 	return Vec4{X: v.X * scale, Y: v.Y * scale, Z: v.Z * scale, W: v.W * scale}
+}
+
+func (v Vec4) Distance(other Vec4) float64 {
+	return v.Sub(other).GetLength()
+}
+
+func (v Vec4) Cross(other Vec4) Vec4 {
+	return Vec4{
+		X: v.Y*other.Z - v.Z*other.Y,
+		Y: v.Z*other.X - v.X*other.Z,
+		Z: v.X*other.Y - v.Y*other.X,
+		W: v.W*other.W - v.W*other.W,
+	}
+}
+
+func (v Vec4) Lerp(other Vec4, t float64) Vec4 {
+	return Vec4{
+		X: v.X + (other.X-v.X)*t,
+		Y: v.Y + (other.Y-v.Y)*t,
+		Z: v.Z + (other.Z-v.Z)*t,
+		W: v.W + (other.W-v.W)*t,
+	}
+}
+
+func (v Vec4) Equals(other Vec4) bool {
+	return v.X == other.X && v.Y == other.Y && v.Z == other.Z && v.W == other.W
+}
+
+func (v Vec4) IsZero() bool {
+	return v.X == 0 && v.Y == 0 && v.Z == 0 && v.W == 0
 }
 
 func (v Vec4) Print() {

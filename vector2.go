@@ -17,7 +17,7 @@ func MakeVec2(x float64, y float64) Vec2 {
 	}
 }
 
-func (v *Vec2) GetLength() float64 {
+func (v Vec2) GetLength() float64 {
 	return math.Sqrt(math.Pow(v.X, 2) + math.Pow(v.Y, 2))
 }
 
@@ -36,10 +36,6 @@ func (v Vec2) Sub(other Vec2) Vec2 {
 	return Vec2{v.X - other.X, v.Y - other.Y}
 }
 
-func (v Vec2) Scale(other Vec2) float64 {
-	return v.X*other.X + v.Y*other.Y
-}
-
 func (v Vec2) Dot(other Vec2) float64 {
 	return v.X*other.X + v.Y*other.Y
 }
@@ -50,6 +46,29 @@ func (v Vec2) DivScale(scale float64) Vec2 {
 
 func (v Vec2) Mul(scale float64) Vec2 {
 	return Vec2{X: v.X * scale, Y: v.Y * scale}
+}
+
+func (v Vec2) Distance(other Vec2) float64 {
+	return v.Sub(other).GetLength()
+}
+
+func (v Vec2) Cross(other Vec2) float64 {
+	return v.X*other.Y - v.Y*other.X
+}
+
+func (v Vec2) Lerp(other Vec2, t float64) Vec2 {
+	return Vec2{
+		X: v.X + (other.X-v.X)*t,
+		Y: v.Y + (other.Y-v.Y)*t,
+	}
+}
+
+func (v Vec2) Equals(other Vec2) bool {
+	return v.X == other.X && v.Y == other.Y
+}
+
+func (v Vec2) IsZero() bool {
+	return v.X == 0 && v.Y == 0
 }
 
 func (v Vec2) Print() {
